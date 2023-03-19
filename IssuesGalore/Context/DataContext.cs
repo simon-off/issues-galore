@@ -30,7 +30,7 @@ internal class DataContext : DbContext
         // Attempt to use a relative path to the db-file. Not sure if it works everywhere?
         optionsBuilder.UseSqlServer(builder.ConnectionString);
         // Absolute path
-        optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dev\yh\datalagring\IssuesGalore\IssuesGalore\Context\issues_galore_db.mdf;Integrated Security=True;Connect Timeout=30");
+        //optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dev\yh\datalagring\IssuesGalore\IssuesGalore\Context\issues_galore_db.mdf;Integrated Security=True;Connect Timeout=30");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
