@@ -156,13 +156,15 @@ internal class UIService
             "│ Subject".PadRight(sizes.Subject) +
             "│ Status".PadRight(sizes.Status) +
             "│ Customer".PadRight(sizes.Customer) +
-            "│ Created".PadRight(sizes.Created));
+            "│ Created".PadRight(Console.BufferWidth - combinedSize + sizes.Created - 1) +
+            "│");
         Console.WriteLine(
             "├".PadRight(sizes.Number, '─') +
             "┼".PadRight(sizes.Subject, '─') +
             "┼".PadRight(sizes.Status, '─') +
             "┼".PadRight(sizes.Customer, '─') +
-            "┼".PadRight(Console.BufferWidth - combinedSize + sizes.Created, '─'));
+            "┼".PadRight(Console.BufferWidth - combinedSize + sizes.Created - 1, '─') +
+            "┤");
 
         var number = 1;
         var idList = new List<Guid>();
@@ -174,7 +176,8 @@ internal class UIService
                 $"│ {ticket.Subject}".PadRight(sizes.Subject) +
                 $"│ {ticket.Status.Name}".PadRight(sizes.Status) +
                 $"│ {ticket.Customer.FirstName} {ticket.Customer.LastName}".PadRight(sizes.Customer) +
-                $"│ {ticket.WhenCreated}".PadRight(sizes.Created));
+                $"│ {ticket.WhenCreated}".PadRight(Console.BufferWidth - combinedSize + sizes.Created - 1) +
+                "│");
             number++;
         }
         Console.WriteLine(
@@ -182,6 +185,7 @@ internal class UIService
             "│".PadRight(sizes.Subject) +
             "│".PadRight(sizes.Status) +
             "│".PadRight(sizes.Customer) +
+            "│".PadRight(Console.BufferWidth - combinedSize + sizes.Created - 1) +
             "│");
 
         return idList;
@@ -304,7 +308,7 @@ internal class UIService
                 $"| {ticket.Customer.PhoneNumber}");
             Console.WriteLine("Created:".PadRight(cmdPad) + $"{ticket.WhenCreated}");
             Console.WriteLine("Status:".PadRight(cmdPad) + $"{ticket.Status.Id}. {ticket.Status.Name}");
-            PrintDivider('─');
+            Console.WriteLine();
             Console.WriteLine(ticket.Subject);
             Console.WriteLine(new string('~', ticket.Subject.Length));
             WriteLineWordWrap(ticket.Description);
