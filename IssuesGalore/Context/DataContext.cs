@@ -1,5 +1,4 @@
 ﻿using IssuesGalore.Models.Entities;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace WpfApp.Context;
@@ -16,21 +15,21 @@ internal class DataContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string projectDirectory = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName!;
+        //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName!;
 
-        SqlConnectionStringBuilder builder = new()
-        {
-            ["Data Source"] = @"(LocalDB)\MSSQLLocalDB",
-            ["AttachDbFilename"] = @$"{projectDirectory}\Context\issues_galore_db.mdf",
-            ["integrated Security"] = true,
-            ["Connect Timeout"] = 30
-        };
+        //SqlConnectionStringBuilder builder = new()
+        //{
+        //    ["Data Source"] = @"(LocalDB)\MSSQLLocalDB",
+        //    ["AttachDbFilename"] = @$"{projectDirectory}\Context\issues_galore_db.mdf",
+        //    ["integrated Security"] = true,
+        //    ["Connect Timeout"] = 30
+        //};
         //Console.WriteLine(builder.ConnectionString);
 
         // Attempt to use a relative path to the db-file. Not sure if it works everywhere?
-        optionsBuilder.UseSqlServer(builder.ConnectionString);
+        //optionsBuilder.UseSqlServer(builder.ConnectionString);
         // Absolute path
-        //optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dev\yh\datalagring\IssuesGalore\IssuesGalore\Context\issues_galore_db.mdf;Integrated Security=True;Connect Timeout=30");
+        optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dev\yh\datalagring\IssuesGalore\IssuesGalore\Context\issues_galore_db.mdf;Integrated Security=True;Connect Timeout=30");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
