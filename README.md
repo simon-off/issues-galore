@@ -8,28 +8,37 @@ Issue tracking app made with [.NET](https://dotnet.microsoft.com/en-us/) and [En
 
 _- Issues Galore is a simple console application where you can add, edit, comment and solve customer support tickets_
 
-The database schema is set up with Entity Framework using a code first approach and the data is stored in a local SQL Server file: `issues_galore_db`. The application has simple CRUD functionality spread across three different views.
+The database schema is set up with Entity Framework using a code-first approach and the data is stored in a local SQL Server file: `issues_galore_db`. The application has simple CRUD functionality spread across three different views.
 
----
+<br/>
 
-## **TICKETS OVERVIEW**
+### **TICKETS OVERVIEW**
 
 ![Tickets overview screen](Screenshots/overview.jpg)
+
 This is the _tickets overview screen_, the home screen of the application, where you get a simple table overview of all the current tickets. If you enter the command `new`, you will navigate to the next view:
 
-## **NEW TICKET**
+<br/>
+
+### **NEW TICKET**
 
 ![New ticket screen](Screenshots/newticket.jpg)
+
 This is the _new ticket screen_ where you fill out the necessary customer and ticket details. After that, the ticket will be added to the database! If you enter an already used email address, then the app will recognize it as a recurring customer.
 
-## **TICKET DETAILS**
+<br/>
+
+### **TICKET DETAILS**
 
 ![Screenshots/details.jpg](Screenshots/details.jpg)
+
 This is the _ticket details screen_. Here you can find all the details about a specific ticket. Open the ticket from the home screen by writing `open` followed by the number of the ticket you wish to see the details about. In this view, you can also add a new comment, change the status, or delete the ticket entirely.
+
+<br/>
 
 ---
 
-## 💿 **Running the app locally**
+## **Running the app locally**
 
 ❗ Make sure you have the latest version of the [.NET sdk](https://dotnet.microsoft.com/en-us/download/dotnet) installed ❗
 
@@ -61,4 +70,6 @@ $ dotnet run
 
 ---
 
-Made with love and lots of [box-drawing characters]() by _[Simon](https://github.com/simon-off)_
+<br/>
+
+Made with love and lots of [box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_character) by _[Simon](https://github.com/simon-off)_
