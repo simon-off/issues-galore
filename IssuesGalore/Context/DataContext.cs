@@ -1,35 +1,30 @@
 ﻿using IssuesGalore.Models.Entities;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace WpfApp.Context;
 
 internal class DataContext : DbContext
 {
-    public DataContext()
-    {
-    }
+    public DataContext() { }
 
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
-    {
-    }
+    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName!;
+        // TODO: Update this string to your local project path
+        string projectDirectory = @"D:\Dev\yh\datalagring\IssuesGalore\IssuesGalore";
 
-        //SqlConnectionStringBuilder builder = new()
-        //{
-        //    ["Data Source"] = @"(LocalDB)\MSSQLLocalDB",
-        //    ["AttachDbFilename"] = @$"{projectDirectory}\Context\issues_galore_db.mdf",
-        //    ["integrated Security"] = true,
-        //    ["Connect Timeout"] = 30
-        //};
-        //Console.WriteLine(builder.ConnectionString);
+        SqlConnectionStringBuilder builder =
+            new()
+            {
+                ["Data Source"] = @"(LocalDB)\MSSQLLocalDB",
+                ["AttachDbFilename"] = @$"{projectDirectory}\Context\issues_galore_db.mdf",
+                ["integrated Security"] = true,
+                ["Connect Timeout"] = 30
+            };
 
-        // Attempt to use a relative path to the db-file. Not sure if it works everywhere?
-        //optionsBuilder.UseSqlServer(builder.ConnectionString);
-        // Absolute path
-        optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Dev\yh\datalagring\IssuesGalore\IssuesGalore\Context\issues_galore_db.mdf;Integrated Security=True;Connect Timeout=30");
+        optionsBuilder.UseSqlServer(builder.ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
